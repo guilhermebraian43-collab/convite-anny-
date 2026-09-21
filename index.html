@@ -4,277 +4,486 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Convite Especial - Anny Vitória</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@800;900&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Comic Sans MS', 'Chalkboard SE', 'Arial', sans-serif;
+      font-family: 'Fredoka One', 'Nunito', sans-serif;
+      user-select: none;
     }
 
     body {
-      background: linear-gradient(180deg, #b3e5fc 0%, #e1bee7 50%, #f8bbd0 100%);
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 15px;
     }
 
-    .container {
+    /* Tela estilo Stories / Reels (Vertical 9:16) */
+    .screen {
       width: 100%;
-      max-width: 400px;
-      background: #ffffffdd;
-      border-radius: 25px;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      max-width: 414px;
+      height: 100vh;
+      max-height: 896px;
       position: relative;
       overflow: hidden;
-      border: 4px solid #fff;
-    }
-
-    .title {
-      font-size: 28px;
-      color: #8e24aa;
-      text-transform: uppercase;
-      font-weight: 900;
-      text-shadow: 2px 2px #ffe0b2;
-      margin-bottom: 5px;
-    }
-
-    .subtitle {
-      font-size: 16px;
-      color: #e91e63;
-      margin-bottom: 15px;
-      font-weight: bold;
-    }
-
-    /* Envelope Animado */
-    .envelope-box {
-      background: #ab47bc;
-      border-radius: 15px;
-      padding: 25px 15px;
-      color: white;
-      cursor: pointer;
-      position: relative;
-      transition: transform 0.3s ease;
-      margin-bottom: 20px;
-      box-shadow: 0 5px 15px rgba(171, 71, 188, 0.4);
-    }
-
-    .envelope-box:hover {
-      transform: scale(1.03);
-    }
-
-    .heart-btn {
-      width: 50px;
-      height: 50px;
-      background: #e91e63;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 10px auto;
-      font-size: 24px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      animation: pulse 1.5s infinite;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-      100% { transform: scale(1); }
-    }
-
-    /* Card de Conteúdo do Convite */
-    .details-card {
-      display: none;
-      background: #fff;
-      border-radius: 15px;
-      padding: 15px;
-      border: 2px dashed #ab47bc;
-      animation: fadeIn 0.5s ease-in-out forwards;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .photo-frame {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      border: 4px solid #ff4081;
-      margin: 0 auto 10px;
-      overflow: hidden;
-      background: #fff;
-    }
-
-    .photo-frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .info-name {
-      font-size: 24px;
-      color: #d81b60;
-      font-weight: bold;
-    }
-
-    .info-date {
-      font-size: 18px;
-      color: #3949ab;
-      margin: 10px 0;
-      font-weight: bold;
-    }
-
-    /* Botões Interativos */
-    .buttons-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-top: 15px;
-    }
-
-    .btn-action {
-      background: #ba68c8;
-      color: white;
-      border: none;
-      padding: 12px 8px;
-      border-radius: 12px;
-      font-size: 12px;
-      font-weight: bold;
-      cursor: pointer;
+      /* Fundo Sunburst Radial Rosa/Roxo do vídeo */
+      background: repeating-conic-gradient(
+        from 0deg,
+        #fbaee3 0deg 15deg,
+        #f482d0 15deg 30deg
+      );
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 5px;
-      text-decoration: none;
-      transition: background 0.2s;
+      justify-content: space-between;
+      padding: 20px 15px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.5);
     }
 
-    .btn-action:hover {
-      background: #8e24aa;
+    /* Arco-Íris no Topo */
+    .rainbow {
+      position: absolute;
+      top: 10px;
+      width: 90%;
+      height: 90px;
+      border-radius: 150px 150px 0 0;
+      border: 12px solid #ff5252;
+      border-bottom: none;
+      box-shadow: 0 -10px 0 10px #ffeb3b, 0 -20px 0 20px #4caf50, 0 -30px 0 30px #2196f3;
+      opacity: 0.85;
+      z-index: 1;
     }
 
-    .btn-action span {
+    /* Personagens Bolofofos no Topo */
+    .characters-top {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      margin-top: 15px;
+      width: 100%;
+    }
+
+    .char {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      background-size: cover;
+      background-position: center;
+      border: 3px solid #fff;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .rick { background-color: #ffb74d; } /* Leãozinho */
+    .bunny { background-color: #e0e0e0; } /* Coelhinha */
+    .pow { background-color: #ba68c8; }   /* Polvinho */
+    .pipi { background-color: #4dd0e1; }  /* Gatinha */
+    .sophie { background-color: #a1887f; }/* Corujinha */
+
+    /* Título CONVITE ESPECIAL */
+    .main-title {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .main-title h1 {
+      font-size: 38px;
+      color: #7b1fa2;
+      text-shadow: 
+        3px 3px 0 #fff,
+        -3px -3px 0 #fff,
+        3px -3px 0 #fff,
+        -3px 3px 0 #fff,
+        0 6px 10px rgba(0,0,0,0.2);
+      letter-spacing: 2px;
+      line-height: 1.1;
+      text-transform: uppercase;
+    }
+
+    .main-title h1 span {
+      color: #ab47bc;
+      display: block;
+    }
+
+    /* Container Central (Envelope ou Conteúdo) */
+    .content-area {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Envelope Roxo/Rosa do Vídeo */
+    .envelope-card {
+      width: 270px;
+      height: 220px;
+      background: linear-gradient(135deg, #ab47bc, #8e24aa);
+      border-radius: 25px;
+      border: 4px solid #f3e5f5;
+      box-shadow: 0 12px 25px rgba(123, 31, 162, 0.4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+
+    .envelope-card:hover {
+      transform: scale(1.05);
+    }
+
+    /* Triângulo do Envelope */
+    .envelope-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 0;
+      height: 0;
+      border-left: 135px solid transparent;
+      border-right: 135px solid transparent;
+      border-top: 90px solid #ba68c8;
+      border-radius: 10px;
+    }
+
+    .heart-seal {
+      width: 60px;
+      height: 60px;
+      background: #e91e63;
+      border: 3px solid #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      color: #fff;
+      z-index: 3;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      animation: heartbeat 1.3s infinite;
+    }
+
+    @keyframes heartbeat {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+      100% { transform: scale(1); }
+    }
+
+    .envelope-text {
+      color: #ffffff;
+      font-size: 20px;
+      margin-top: 15px;
+      z-index: 3;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
+
+    .click-hand {
+      font-size: 32px;
+      position: absolute;
+      bottom: 20px;
+      left: 30px;
+      z-index: 3;
+      animation: bounceHand 1.5s infinite;
+    }
+
+    @keyframes bounceHand {
+      0%, 100% { transform: translateY(0) rotate(-20deg); }
+      50% { transform: translateY(-10px) rotate(-20deg); }
+    }
+
+    /* Cartão do Aniversariante (Aparece ao Clicar) */
+    .invite-details {
+      display: none;
+      width: 100%;
+      text-align: center;
+      animation: zoomIn 0.5s ease forwards;
+    }
+
+    @keyframes zoomIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .photo-wrapper {
+      position: relative;
+      width: 160px;
+      height: 160px;
+      margin: 0 auto 10px;
+    }
+
+    .photo-wrapper img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 6px solid #fff;
+      object-fit: cover;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    }
+
+    .age-badge {
+      position: absolute;
+      top: -10px;
+      right: 0px;
+      background: #ffeb3b;
+      color: #d81b60;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 16px;
+      border: 2px solid #fff;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .child-name {
+      font-size: 36px;
+      color: #8e24aa;
+      text-shadow: 2px 2px 0 #fff;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+
+    .date-box {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      padding: 10px 15px;
+      margin: 10px 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      border: 2px solid #ba68c8;
+    }
+
+    .date-box p {
+      color: #d81b60;
       font-size: 18px;
     }
 
-    /* Modal / Popups */
-    .modal {
+    .address-text {
+      font-size: 13px;
+      color: #4a148c;
+      margin-top: 5px;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900;
+    }
+
+    /* Barra Inferior com 4 Botões Idênticos ao Vídeo */
+    .bottom-nav {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .nav-btn {
+      flex: 1;
+      background: rgba(234, 128, 252, 0.85);
+      border: 2px solid #ffffff;
+      border-radius: 18px;
+      padding: 10px 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: #4a148c;
+      font-size: 10px;
+      font-weight: 900;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      backdrop-filter: blur(5px);
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .nav-btn:active {
+      transform: scale(0.92);
+    }
+
+    .nav-btn .icon {
+      width: 38px;
+      height: 38px;
+      background: #ab47bc;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: #fff;
+      margin-bottom: 4px;
+      border: 2px solid #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    /* Popups / Modais */
+    .modal-overlay {
       display: none;
-      position: fixed;
+      position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.5);
+      background: rgba(74, 20, 140, 0.7);
+      z-index: 10;
       justify-content: center;
       align-items: center;
-      z-index: 100;
       padding: 20px;
+      backdrop-filter: blur(4px);
     }
 
-    .modal-content {
-      background: white;
-      padding: 20px;
-      border-radius: 20px;
-      max-width: 350px;
+    .modal-card {
+      background: #ffffff;
+      border-radius: 25px;
+      padding: 25px 20px;
       width: 100%;
+      max-width: 320px;
       text-align: center;
-      position: relative;
+      border: 4px solid #ba68c8;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      animation: popUp 0.3s ease;
     }
 
-    .modal-content h3 {
+    @keyframes popUp {
+      from { transform: scale(0.7); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .modal-card h3 {
       color: #8e24aa;
-      margin-bottom: 12px;
+      font-size: 22px;
+      margin-bottom: 15px;
     }
 
-    .modal-content ul {
+    .gift-list {
       list-style: none;
       text-align: left;
-      font-size: 14px;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
       color: #444;
-      line-height: 1.8;
+      font-size: 15px;
+      line-height: 2;
     }
 
-    .close-btn {
-      margin-top: 15px;
+    .gift-list li {
+      border-bottom: 1px dashed #e1bee7;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-close {
+      margin-top: 18px;
       background: #e91e63;
-      color: white;
+      color: #fff;
       border: none;
-      padding: 8px 15px;
-      border-radius: 10px;
+      padding: 10px 25px;
+      border-radius: 20px;
+      font-size: 16px;
+      font-weight: 900;
       cursor: pointer;
-      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(233, 30, 99, 0.4);
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <h1 class="title">CONVITE ESPACIAL</h1>
-    <p class="subtitle">Anny Vitória</p>
+  <div class="screen">
+    <!-- Arco-íris do topo -->
+    <div class="rainbow"></div>
 
-    <!-- Envelope Interativo -->
-    <div class="envelope-box" id="envelope" onclick="abrirConvite()">
-      <div class="heart-btn">💖</div>
-      <p>Clique para abrir</p>
+    <!-- Personagens Bolofofos -->
+    <div class="characters-top">
+      <div class="char rick" title="Rick"></div>
+      <div class="char bunny" title="Bunny"></div>
+      <div class="char pow" title="Pow"></div>
+      <div class="char pipi" title="Pipi"></div>
+      <div class="char sophie" title="Sophie"></div>
     </div>
 
-    <!-- Conteúdo Interno após Clicar -->
-    <div class="details-card" id="detailsCard">
-      <div class="photo-frame">
-        <!-- Substitua a URL da imagem abaixo pela foto da Anny Vitória -->
-        <img src="https://via.placeholder.com/150/ff80ab/ffffff?text=Anny+Vit%C3%B3ria" alt="Anny Vitória">
+    <!-- Título idêntico ao vídeo -->
+    <div class="main-title">
+      <h1>CONVITE <span>ESPECIAL</span></h1>
+    </div>
+
+    <!-- Área de Conteúdo Central -->
+    <div class="content-area">
+      <!-- Envelope Fechado -->
+      <div class="envelope-card" id="envelope" onclick="abrirConvite()">
+        <div class="click-hand">↖️</div>
+        <div class="heart-seal">💖</div>
+        <p class="envelope-text">Clique para abrir</p>
       </div>
-      <h2 class="info-name">Anny Vitória</h2>
-      <p class="info-date">📅 Dia 06 às 19:00h</p>
 
-      <!-- Botões de Ação -->
-      <div class="buttons-grid">
-        <a href="https://wa.me/5500000000000?text=Olá,%20confirmo%20minha%20presença%20no%20aniversário%20da%20Anny%20Vitória!" target="_blank" class="btn-action">
-          <span>✅</span> Confirmar Presença
-        </a>
+      <!-- Convite Aberto -->
+      <div class="invite-details" id="inviteDetails">
+        <div class="photo-wrapper">
+          <!-- Coloque a foto da Anny Vitória na linha abaixo -->
+          <img src="https://via.placeholder.com/300/f482d0/ffffff?text=Anny+Vit%C3%B3ria" alt="Anny Vitória">
+          <div class="age-badge">1 aninho</div>
+        </div>
 
-        <a href="https://maps.google.com/?q=Rua+D+n33+entre+ruas+01+e+02+cidade+nova" target="_blank" class="btn-action">
-          <span>📍</span> Acessar Localização
-        </a>
+        <h2 class="child-name">Anny Vitória</h2>
 
-        <button class="btn-action" onclick="abrirPresentes()">
-          <span>🎁</span> Sugestão de Presentes
-        </button>
-
-        <a href="https://instagram.com" target="_blank" class="btn-action">
-          <span>📸</span> Filtro da Festa
-        </a>
+        <div class="date-box">
+          <p>📅 <strong>Dia 06</strong> às <strong>19:00h</strong></p>
+          <p class="address-text">📍 Rua D, nº 33 (entre ruas 01 e 02)<br>Cidade Nova</p>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Modal de Sugestão de Presentes -->
-  <div class="modal" id="modalPresentes">
-    <div class="modal-content">
-      <h3>🎁 Sugestões de Presentes</h3>
-      <ul>
-        <li>👗 Roupa ou pijama (1 a 2 anos)</li>
-        <li>🌸 Perfume / Hidratantes</li>
-        <li>🧸 Brinquedos</li>
-        <li>👟 Calçados (Tamanho 20 ou 21)</li>
-        <li>👑 Acessórios</li>
-      </ul>
-      <button class="close-btn" onclick="fecharPresentes()">Fechar</button>
+    <!-- 4 Botões Inferiores -->
+    <div class="bottom-nav">
+      <a href="https://wa.me/5500000000000?text=Olá!%20Confirmo%20minha%20presença%20no%20aniversário%20da%20Anny%20Vitória!" target="_blank" class="nav-btn">
+        <div class="icon">📝</div>
+        Confirmar presença
+      </a>
+
+      <a href="https://maps.google.com/?q=Rua+D+n33+entre+ruas+01+e+02+cidade+nova" target="_blank" class="nav-btn">
+        <div class="icon">📍</div>
+        Acessar Localização
+      </a>
+
+      <button class="nav-btn" onclick="abrirPresentes()">
+        <div class="icon">🎁</div>
+        Sugestão de Presentes
+      </button>
+
+      <a href="https://instagram.com" target="_blank" class="nav-btn">
+        <div class="icon">📷</div>
+        Acessar filtro da festa
+      </a>
+    </div>
+
+    <!-- Modal de Sugestões de Presente -->
+    <div class="modal-overlay" id="modalPresentes">
+      <div class="modal-card">
+        <h3>🎁 Lista de Sugestões</h3>
+        <ul class="gift-list">
+          <li>👗 Roupa ou pijama (1 a 2 anos)</li>
+          <li>✨ Perfume / Hidratantes</li>
+          <li>🧸 Brinquedos</li>
+          <li>👟 Calçados nº 20 ou 21</li>
+          <li>👑 Amo acessórios</li>
+        </ul>
+        <button class="btn-close" onclick="fecharPresentes()">Fechar</button>
+      </div>
     </div>
   </div>
 
   <script>
     function abrirConvite() {
       document.getElementById('envelope').style.display = 'none';
-      document.getElementById('detailsCard').style.display = 'block';
+      document.getElementById('inviteDetails').style.display = 'block';
     }
 
     function abrirPresentes() {
