@@ -15,14 +15,14 @@
     }
 
     body {
-      background: #000;
+      background: #111;
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
     }
 
-    /* Tela estilo Stories / Reels (Vertical 9:16) */
+    /* Tela formato Stories / Reels (Vertical 9:16) */
     .screen {
       width: 100%;
       max-width: 414px;
@@ -30,7 +30,7 @@
       max-height: 896px;
       position: relative;
       overflow: hidden;
-      /* Fundo Sunburst Radial Rosa/Roxo do vídeo */
+      /* Fundo do vídeo estilo raio rosa/roxo */
       background: repeating-conic-gradient(
         from 0deg,
         #fbaee3 0deg 15deg,
@@ -40,80 +40,76 @@
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
-      padding: 20px 15px;
-      box-shadow: 0 0 30px rgba(0,0,0,0.5);
+      padding: 15px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.6);
     }
 
-    /* Arco-Íris no Topo */
+    /* Arco-Íris do topo */
     .rainbow {
       position: absolute;
-      top: 10px;
+      top: 5px;
       width: 90%;
-      height: 90px;
+      height: 80px;
       border-radius: 150px 150px 0 0;
-      border: 12px solid #ff5252;
+      border: 10px solid #ff5252;
       border-bottom: none;
-      box-shadow: 0 -10px 0 10px #ffeb3b, 0 -20px 0 20px #4caf50, 0 -30px 0 30px #2196f3;
-      opacity: 0.85;
+      box-shadow: 0 -8px 0 8px #ffeb3b, 0 -16px 0 16px #4caf50, 0 -24px 0 24px #2196f3;
+      opacity: 0.8;
       z-index: 1;
     }
 
-    /* Personagens Bolofofos no Topo */
+    /* Topo com os Personagens */
     .characters-top {
       position: relative;
       z-index: 2;
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 8px;
+      gap: 5px;
       margin-top: 15px;
       width: 100%;
     }
 
-    .char {
-      width: 55px;
-      height: 55px;
-      border-radius: 50%;
-      background-size: cover;
-      background-position: center;
-      border: 3px solid #fff;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    .char-img {
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
+      filter: drop-shadow(0px 3px 5px rgba(0,0,0,0.3));
+      transition: transform 0.2s;
     }
 
-    .rick { background-color: #ffb74d; } /* Leãozinho */
-    .bunny { background-color: #e0e0e0; } /* Coelhinha */
-    .pow { background-color: #ba68c8; }   /* Polvinho */
-    .pipi { background-color: #4dd0e1; }  /* Gatinha */
-    .sophie { background-color: #a1887f; }/* Corujinha */
+    .char-img:hover {
+      transform: scale(1.15) rotate(5deg);
+    }
 
-    /* Título CONVITE ESPECIAL */
-    .main-title {
+    /* Logo dos Bolofofos / Título */
+    .header-logo {
       position: relative;
       z-index: 2;
       text-align: center;
-      margin-top: 10px;
+      margin-top: 5px;
     }
 
-    .main-title h1 {
-      font-size: 38px;
+    .logo-img {
+      width: 180px;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+    }
+
+    .title-text {
+      font-size: 32px;
       color: #7b1fa2;
       text-shadow: 
-        3px 3px 0 #fff,
-        -3px -3px 0 #fff,
-        3px -3px 0 #fff,
-        -3px 3px 0 #fff,
-        0 6px 10px rgba(0,0,0,0.2);
-      letter-spacing: 2px;
-      line-height: 1.1;
+        2px 2px 0 #fff,
+        -2px -2px 0 #fff,
+        2px -2px 0 #fff,
+        -2px 2px 0 #fff,
+        0 4px 8px rgba(0,0,0,0.2);
+      letter-spacing: 1.5px;
       text-transform: uppercase;
+      margin-top: -5px;
     }
 
-    .main-title h1 span {
-      color: #ab47bc;
-      display: block;
-    }
-
-    /* Container Central (Envelope ou Conteúdo) */
+    /* ÁREA CENTRAL DO CONVITE */
     .content-area {
       position: relative;
       z-index: 2;
@@ -124,57 +120,51 @@
       align-items: center;
     }
 
-    /* Envelope Roxo/Rosa do Vídeo */
+    /* Envelope Roxo */
     .envelope-card {
       width: 270px;
-      height: 220px;
+      height: 200px;
       background: linear-gradient(135deg, #ab47bc, #8e24aa);
       border-radius: 25px;
-      border: 4px solid #f3e5f5;
-      box-shadow: 0 12px 25px rgba(123, 31, 162, 0.4);
+      border: 4px solid #ffffff;
+      box-shadow: 0 10px 25px rgba(123, 31, 162, 0.5);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       cursor: pointer;
       position: relative;
-      transition: transform 0.3s ease;
     }
 
-    .envelope-card:hover {
-      transform: scale(1.05);
-    }
-
-    /* Triângulo do Envelope */
     .envelope-card::before {
       content: '';
       position: absolute;
       top: 0;
       width: 0;
       height: 0;
-      border-left: 135px solid transparent;
-      border-right: 135px solid transparent;
-      border-top: 90px solid #ba68c8;
-      border-radius: 10px;
+      border-left: 131px solid transparent;
+      border-right: 131px solid transparent;
+      border-top: 85px solid #ba68c8;
+      border-radius: 8px;
     }
 
     .heart-seal {
-      width: 60px;
-      height: 60px;
+      width: 55px;
+      height: 55px;
       background: #e91e63;
       border: 3px solid #fff;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 28px;
+      font-size: 26px;
       color: #fff;
       z-index: 3;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      animation: heartbeat 1.3s infinite;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      animation: pulse 1.3s infinite;
     }
 
-    @keyframes heartbeat {
+    @keyframes pulse {
       0% { transform: scale(1); }
       50% { transform: scale(1.15); }
       100% { transform: scale(1); }
@@ -182,43 +172,43 @@
 
     .envelope-text {
       color: #ffffff;
-      font-size: 20px;
-      margin-top: 15px;
+      font-size: 19px;
+      margin-top: 12px;
       z-index: 3;
       text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
     }
 
     .click-hand {
-      font-size: 32px;
+      font-size: 28px;
       position: absolute;
-      bottom: 20px;
-      left: 30px;
+      bottom: 15px;
+      left: 25px;
       z-index: 3;
-      animation: bounceHand 1.5s infinite;
+      animation: bounce 1.5s infinite;
     }
 
-    @keyframes bounceHand {
+    @keyframes bounce {
       0%, 100% { transform: translateY(0) rotate(-20deg); }
-      50% { transform: translateY(-10px) rotate(-20deg); }
+      50% { transform: translateY(-8px) rotate(-20deg); }
     }
 
-    /* Cartão do Aniversariante (Aparece ao Clicar) */
+    /* Conteúdo Aberto com a Foto Real da Anny Vitória */
     .invite-details {
       display: none;
       width: 100%;
       text-align: center;
-      animation: zoomIn 0.5s ease forwards;
+      animation: openInvite 0.5s ease forwards;
     }
 
-    @keyframes zoomIn {
+    @keyframes openInvite {
       from { opacity: 0; transform: scale(0.8); }
       to { opacity: 1; transform: scale(1); }
     }
 
     .photo-wrapper {
       position: relative;
-      width: 160px;
-      height: 160px;
+      width: 170px;
+      height: 170px;
       margin: 0 auto 10px;
     }
 
@@ -233,19 +223,20 @@
 
     .age-badge {
       position: absolute;
-      top: -10px;
-      right: 0px;
+      top: -5px;
+      right: -5px;
       background: #ffeb3b;
       color: #d81b60;
-      padding: 5px 12px;
+      padding: 6px 14px;
       border-radius: 20px;
-      font-size: 16px;
+      font-size: 15px;
+      font-weight: 900;
       border: 2px solid #fff;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
 
     .child-name {
-      font-size: 36px;
+      font-size: 34px;
       color: #8e24aa;
       text-shadow: 2px 2px 0 #fff;
       text-transform: uppercase;
@@ -253,11 +244,11 @@
     }
 
     .date-box {
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 18px;
       padding: 10px 15px;
-      margin: 10px 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin: 10px 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
       border: 2px solid #ba68c8;
     }
 
@@ -269,50 +260,49 @@
     .address-text {
       font-size: 13px;
       color: #4a148c;
-      margin-top: 5px;
+      margin-top: 4px;
       font-family: 'Nunito', sans-serif;
       font-weight: 900;
+      line-height: 1.3;
     }
 
-    /* Barra Inferior com 4 Botões Idênticos ao Vídeo */
+    /* BARRA INFERIOR DE BOTÕES */
     .bottom-nav {
       position: relative;
       z-index: 2;
       display: flex;
       justify-content: space-between;
       width: 100%;
-      gap: 6px;
-      margin-top: 10px;
+      gap: 5px;
     }
 
     .nav-btn {
       flex: 1;
-      background: rgba(234, 128, 252, 0.85);
+      background: rgba(234, 128, 252, 0.9);
       border: 2px solid #ffffff;
-      border-radius: 18px;
-      padding: 10px 4px;
+      border-radius: 16px;
+      padding: 8px 2px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-decoration: none;
       color: #4a148c;
-      font-size: 10px;
+      font-size: 9px;
       font-weight: 900;
       text-align: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-      backdrop-filter: blur(5px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
       cursor: pointer;
-      transition: transform 0.2s;
+      transition: transform 0.1s;
     }
 
     .nav-btn:active {
-      transform: scale(0.92);
+      transform: scale(0.93);
     }
 
     .nav-btn .icon {
-      width: 38px;
-      height: 38px;
+      width: 36px;
+      height: 36px;
       background: #ab47bc;
       border-radius: 50%;
       display: flex;
@@ -320,12 +310,12 @@
       justify-content: center;
       font-size: 18px;
       color: #fff;
-      margin-bottom: 4px;
+      margin-bottom: 3px;
       border: 2px solid #fff;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
 
-    /* Popups / Modais */
+    /* Modal Lista de Presentes */
     .modal-overlay {
       display: none;
       position: absolute;
@@ -333,7 +323,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(74, 20, 140, 0.7);
+      background: rgba(74, 20, 140, 0.75);
       z-index: 10;
       justify-content: center;
       align-items: center;
@@ -344,24 +334,18 @@
     .modal-card {
       background: #ffffff;
       border-radius: 25px;
-      padding: 25px 20px;
+      padding: 20px;
       width: 100%;
-      max-width: 320px;
+      max-width: 310px;
       text-align: center;
       border: 4px solid #ba68c8;
       box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-      animation: popUp 0.3s ease;
-    }
-
-    @keyframes popUp {
-      from { transform: scale(0.7); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
     }
 
     .modal-card h3 {
       color: #8e24aa;
-      font-size: 22px;
-      margin-bottom: 15px;
+      font-size: 20px;
+      margin-bottom: 12px;
     }
 
     .gift-list {
@@ -370,52 +354,47 @@
       font-family: 'Nunito', sans-serif;
       font-weight: 800;
       color: #444;
-      font-size: 15px;
-      line-height: 2;
+      font-size: 14px;
+      line-height: 2.1;
     }
 
     .gift-list li {
       border-bottom: 1px dashed #e1bee7;
-      display: flex;
-      align-items: center;
-      gap: 8px;
     }
 
     .btn-close {
-      margin-top: 18px;
+      margin-top: 15px;
       background: #e91e63;
       color: #fff;
       border: none;
-      padding: 10px 25px;
-      border-radius: 20px;
-      font-size: 16px;
+      padding: 8px 20px;
+      border-radius: 18px;
+      font-size: 15px;
       font-weight: 900;
       cursor: pointer;
-      box-shadow: 0 4px 10px rgba(233, 30, 99, 0.4);
     }
   </style>
 </head>
 <body>
 
   <div class="screen">
-    <!-- Arco-íris do topo -->
     <div class="rainbow"></div>
 
-    <!-- Personagens Bolofofos -->
+    <!-- Personagens Reais Bolofofos no Topo -->
     <div class="characters-top">
-      <div class="char rick" title="Rick"></div>
-      <div class="char bunny" title="Bunny"></div>
-      <div class="char pow" title="Pow"></div>
-      <div class="char pipi" title="Pipi"></div>
-      <div class="char sophie" title="Sophie"></div>
+      <img src="personagem 4.jfif" class="char-img" alt="Rick">
+      <img src="personagem 1.jfif" class="char-img" alt="Bunny">
+      <img src="personagem 2.jfif" class="char-img" alt="Pow">
+      <img src="personagem 3.jfif" class="char-img" alt="Sophie">
     </div>
 
-    <!-- Título idêntico ao vídeo -->
-    <div class="main-title">
-      <h1>CONVITE <span>ESPECIAL</span></h1>
+    <!-- Logo Oficial e Título -->
+    <div class="header-logo">
+      <img src="logo.png" class="logo-img" alt="Bolofofos">
+      <h1 class="title-text">CONVITE ESPECIAL</h1>
     </div>
 
-    <!-- Área de Conteúdo Central -->
+    <!-- Envelope ou Foto da Anny Vitória -->
     <div class="content-area">
       <!-- Envelope Fechado -->
       <div class="envelope-card" id="envelope" onclick="abrirConvite()">
@@ -427,9 +406,8 @@
       <!-- Convite Aberto -->
       <div class="invite-details" id="inviteDetails">
         <div class="photo-wrapper">
-          <!-- Coloque a foto da Anny Vitória na linha abaixo -->
-          <img src="https://via.placeholder.com/300/f482d0/ffffff?text=Anny+Vit%C3%B3ria" alt="Anny Vitória">
-          <div class="age-badge">1 aninho</div>
+          <img src="foto anny.jpeg" alt="Anny Vitória">
+          <div class="age-badge">1 a 2 anos</div>
         </div>
 
         <h2 class="child-name">Anny Vitória</h2>
@@ -441,7 +419,7 @@
       </div>
     </div>
 
-    <!-- 4 Botões Inferiores -->
+    <!-- Botões Inferiores -->
     <div class="bottom-nav">
       <a href="https://wa.me/5500000000000?text=Olá!%20Confirmo%20minha%20presença%20no%20aniversário%20da%20Anny%20Vitória!" target="_blank" class="nav-btn">
         <div class="icon">📝</div>
@@ -464,10 +442,10 @@
       </a>
     </div>
 
-    <!-- Modal de Sugestões de Presente -->
+    <!-- Popup da Lista de Presentes -->
     <div class="modal-overlay" id="modalPresentes">
       <div class="modal-card">
-        <h3>🎁 Lista de Sugestões</h3>
+        <h3>🎁 Sugestão de Presentes</h3>
         <ul class="gift-list">
           <li>👗 Roupa ou pijama (1 a 2 anos)</li>
           <li>✨ Perfume / Hidratantes</li>
