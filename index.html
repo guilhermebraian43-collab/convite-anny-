@@ -61,7 +61,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       margin-top: 15px;
       width: 100%;
     }
@@ -73,7 +73,7 @@
       object-fit: cover;
       background: #fff;
       border: 2px solid #fff;
-      box-shadow: 0px 3px 6px rgba(0,0,0,0.3);
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
     }
 
     .header-logo {
@@ -197,8 +197,8 @@
 
     .photo-wrapper {
       position: relative;
-      width: 170px;
-      height: 170px;
+      width: 175px;
+      height: 175px;
       margin: 0 auto 10px;
     }
 
@@ -219,7 +219,7 @@
       color: #d81b60;
       padding: 6px 14px;
       border-radius: 20px;
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 900;
       border: 2px solid #fff;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
@@ -237,7 +237,7 @@
       background: rgba(255, 255, 255, 0.95);
       border-radius: 18px;
       padding: 10px 15px;
-      margin: 10px 10px;
+      margin: 8px 10px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
       border: 2px solid #ba68c8;
     }
@@ -360,21 +360,21 @@
   <div class="screen">
     <div class="rainbow"></div>
 
-    <!-- Personagens com fallback e carregamento garantido -->
+    <!-- Personagens do Topo -->
     <div class="characters-top">
-      <img src="personagem%204.jfif" onerror="this.src='https://i.ibb.co/6P0LWWd/rick.png'" class="char-img" alt="Rick">
-      <img src="personagem%201.jfif" onerror="this.src='https://i.ibb.co/3s3K8tX/bunny.png'" class="char-img" alt="Bunny">
-      <img src="personagem%202.jfif" onerror="this.src='https://i.ibb.co/7CptNfp/pow.png'" class="char-img" alt="Pow">
-      <img src="personagem%203.jfif" onerror="this.src='https://i.ibb.co/mSRp320/sophie.png'" class="char-img" alt="Sophie">
+      <img src="rick.jpg" class="char-img" alt="Rick">
+      <img src="bunny.jpg" class="char-img" alt="Bunny">
+      <img src="pow.jpg" class="char-img" alt="Pow">
+      <img src="sophie.jpg" class="char-img" alt="Sophie">
     </div>
 
-    <!-- Logo e Título -->
+    <!-- Logótipo Oficial -->
     <div class="header-logo">
-      <img src="logo.png" onerror="this.src='https://i.ibb.co/xLMKG1v/logo.png'" class="logo-img" alt="Bolofofos">
+      <img src="logo.png" class="logo-img" alt="Bolofofos">
       <h1 class="title-text">CONVITE ESPECIAL</h1>
     </div>
 
-    <!-- Envelope e Foto da Anny Vitória -->
+    <!-- Envelope / Convite -->
     <div class="content-area">
       <div class="envelope-card" id="envelope" onclick="abrirConvite()">
         <div class="click-hand">↖️</div>
@@ -384,7 +384,7 @@
 
       <div class="invite-details" id="inviteDetails">
         <div class="photo-wrapper">
-          <img src="foto%20anny.jpeg" onerror="this.src='https://i.ibb.co/4T76KkS/anny.jpg'" alt="Anny Vitória">
+          <img src="anny.jpg" alt="Anny Vitória">
           <div class="age-badge">1 a 2 anos</div>
         </div>
 
@@ -420,7 +420,7 @@
       </a>
     </div>
 
-    <!-- Popup da Lista de Presentes -->
+    <!-- Popup de Presentes -->
     <div class="modal-overlay" id="modalPresentes">
       <div class="modal-card">
         <h3>🎁 Sugestão de Presentes</h3>
