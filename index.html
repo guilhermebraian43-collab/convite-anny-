@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Convite Especial - Anny Vitória</title>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@800;900&display=swap" rel="stylesheet">
+  <!-- Biblioteca para efeito de confetes caindo -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <style>
     * {
       box-sizing: border-box;
@@ -15,13 +17,15 @@
     }
 
     body {
-      background: #111;
+      background: #0f0b1a;
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
+      overflow: hidden;
     }
 
+    /* Container do Ecrã do Telemóvel */
     .screen {
       width: 100%;
       max-width: 414px;
@@ -29,19 +33,36 @@
       max-height: 896px;
       position: relative;
       overflow: hidden;
-      background: repeating-conic-gradient(
-        from 0deg,
-        #fbaee3 0deg 15deg,
-        #f482d0 15deg 30deg
-      );
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
       padding: 15px;
-      box-shadow: 0 0 30px rgba(0,0,0,0.6);
+      box-shadow: 0 0 40px rgba(0,0,0,0.8);
     }
 
+    /* FUNDO ANIMADO (Sunburst a Girar 360deg) */
+    .animated-bg {
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: repeating-conic-gradient(
+        from 0deg,
+        #fbaee3 0deg 15deg,
+        #f482d0 15deg 30deg
+      );
+      animation: rotateBg 20s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes rotateBg {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Arco-Íris no Topo */
     .rainbow {
       position: absolute;
       top: 5px;
@@ -51,10 +72,30 @@
       border: 10px solid #ff5252;
       border-bottom: none;
       box-shadow: 0 -8px 0 8px #ffeb3b, 0 -16px 0 16px #4caf50, 0 -24px 0 24px #2196f3;
-      opacity: 0.8;
+      opacity: 0.85;
       z-index: 1;
     }
 
+    /* Botão Flutuante de Áudio/Música no Topo */
+    .music-control {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.9);
+      border: 2px solid #ab47bc;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    /* Personagens em Destaque no Topo */
     .characters-top {
       position: relative;
       z-index: 2;
@@ -72,10 +113,22 @@
       border-radius: 50%;
       object-fit: cover;
       background: #fff;
-      border: 2px solid #fff;
-      box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
+      border: 3px solid #fff;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+      transition: transform 0.3s;
+      animation: floatChar 3s ease-in-out infinite alternate;
     }
 
+    .char-img:nth-child(2) { animation-delay: 0.5s; }
+    .char-img:nth-child(3) { animation-delay: 1s; }
+    .char-img:nth-child(4) { animation-delay: 1.5s; }
+
+    @keyframes floatChar {
+      0% { transform: translateY(0px); }
+      100% { transform: translateY(-8px); }
+    }
+
+    /* Logo & Título com Animação Pulsante */
     .header-logo {
       position: relative;
       z-index: 2;
@@ -85,7 +138,7 @@
 
     .logo-img {
       width: 180px;
-      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.25));
     }
 
     .title-text {
@@ -102,6 +155,7 @@
       margin-top: -5px;
     }
 
+    /* Área Central */
     .content-area {
       position: relative;
       z-index: 2;
@@ -112,19 +166,25 @@
       align-items: center;
     }
 
+    /* Envelope Interativo */
     .envelope-card {
       width: 270px;
       height: 200px;
       background: linear-gradient(135deg, #ab47bc, #8e24aa);
       border-radius: 25px;
       border: 4px solid #ffffff;
-      box-shadow: 0 10px 25px rgba(123, 31, 162, 0.5);
+      box-shadow: 0 12px 28px rgba(123, 31, 162, 0.6);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       cursor: pointer;
       position: relative;
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .envelope-card:hover {
+      transform: scale(1.06);
     }
 
     .envelope-card::before {
@@ -140,8 +200,8 @@
     }
 
     .heart-seal {
-      width: 55px;
-      height: 55px;
+      width: 58px;
+      height: 58px;
       background: #e91e63;
       border: 3px solid #fff;
       border-radius: 50%;
@@ -151,13 +211,13 @@
       font-size: 26px;
       color: #fff;
       z-index: 3;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      animation: pulse 1.3s infinite;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      animation: pulse 1.2s infinite;
     }
 
     @keyframes pulse {
       0% { transform: scale(1); }
-      50% { transform: scale(1.15); }
+      50% { transform: scale(1.18); }
       100% { transform: scale(1); }
     }
 
@@ -183,16 +243,17 @@
       50% { transform: translateY(-8px) rotate(-20deg); }
     }
 
+    /* Detalhes do Convite Aberto */
     .invite-details {
       display: none;
       width: 100%;
       text-align: center;
-      animation: openInvite 0.5s ease forwards;
+      animation: openInvite 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
     }
 
     @keyframes openInvite {
-      from { opacity: 0; transform: scale(0.8); }
-      to { opacity: 1; transform: scale(1); }
+      from { opacity: 0; transform: scale(0.6) rotate(-5deg); }
+      to { opacity: 1; transform: scale(1) rotate(0deg); }
     }
 
     .photo-wrapper {
@@ -208,7 +269,7 @@
       border-radius: 50%;
       border: 6px solid #fff;
       object-fit: cover;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
     }
 
     .age-badge {
@@ -256,6 +317,7 @@
       line-height: 1.3;
     }
 
+    /* Botões Inferiores */
     .bottom-nav {
       position: relative;
       z-index: 2;
@@ -267,7 +329,7 @@
 
     .nav-btn {
       flex: 1;
-      background: rgba(234, 128, 252, 0.9);
+      background: rgba(234, 128, 252, 0.92);
       border: 2px solid #ffffff;
       border-radius: 16px;
       padding: 8px 2px;
@@ -280,8 +342,14 @@
       font-size: 9px;
       font-weight: 900;
       text-align: center;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
       cursor: pointer;
+      backdrop-filter: blur(4px);
+      transition: transform 0.15s;
+    }
+
+    .nav-btn:active {
+      transform: scale(0.92);
     }
 
     .nav-btn .icon {
@@ -298,6 +366,7 @@
       border: 2px solid #fff;
     }
 
+    /* Popup Modal da Lista de Presentes */
     .modal-overlay {
       display: none;
       position: absolute;
@@ -305,11 +374,12 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(74, 20, 140, 0.75);
+      background: rgba(74, 20, 140, 0.8);
       z-index: 10;
       justify-content: center;
       align-items: center;
       padding: 20px;
+      backdrop-filter: blur(5px);
     }
 
     .modal-card {
@@ -320,6 +390,13 @@
       max-width: 310px;
       text-align: center;
       border: 4px solid #ba68c8;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      animation: popModal 0.3s ease;
+    }
+
+    @keyframes popModal {
+      from { transform: scale(0.7); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
     }
 
     .modal-card h3 {
@@ -357,24 +434,36 @@
 </head>
 <body>
 
+  <!-- Áudio de Fundo (na pasta audio/) -->
+  <audio id="bgMusic" loop preload="auto">
+    <source src="audio/musica.mp3" type="audio/mpeg">
+  </audio>
+
   <div class="screen">
+    <!-- Fundo Animado Giratório -->
+    <div class="animated-bg"></div>
+
+    <!-- Arco-íris -->
     <div class="rainbow"></div>
 
-    <!-- Personagens do Topo -->
+    <!-- Botão Mute/Unmute da Música -->
+    <div class="music-control" id="musicToggle" onclick="toggleMusica()">🔊</div>
+
+    <!-- Personagens no Topo (na pasta img/) -->
     <div class="characters-top">
-      <img src="rick.jpg" class="char-img" alt="Rick">
-      <img src="bunny.jpg" class="char-img" alt="Bunny">
-      <img src="pow.jpg" class="char-img" alt="Pow">
-      <img src="sophie.jpg" class="char-img" alt="Sophie">
+      <img src="img/rick.jpg" class="char-img" alt="Rick">
+      <img src="img/bunny.jpg" class="char-img" alt="Bunny">
+      <img src="img/pow.jpg" class="char-img" alt="Pow">
+      <img src="img/sophie.jpg" class="char-img" alt="Sophie">
     </div>
 
-    <!-- Logótipo Oficial -->
+    <!-- Logo e Título -->
     <div class="header-logo">
-      <img src="logo.png" class="logo-img" alt="Bolofofos">
+      <img src="img/logo.png" class="logo-img" alt="Bolofofos">
       <h1 class="title-text">CONVITE ESPECIAL</h1>
     </div>
 
-    <!-- Envelope / Convite -->
+    <!-- Envelope ou Convite Aberto -->
     <div class="content-area">
       <div class="envelope-card" id="envelope" onclick="abrirConvite()">
         <div class="click-hand">↖️</div>
@@ -384,7 +473,7 @@
 
       <div class="invite-details" id="inviteDetails">
         <div class="photo-wrapper">
-          <img src="anny.jpg" alt="Anny Vitória">
+          <img src="img/anny.jpg" alt="Anny Vitória">
           <div class="age-badge">1 a 2 anos</div>
         </div>
 
@@ -420,7 +509,7 @@
       </a>
     </div>
 
-    <!-- Popup de Presentes -->
+    <!-- Modal da Lista de Presentes -->
     <div class="modal-overlay" id="modalPresentes">
       <div class="modal-card">
         <h3>🎁 Sugestão de Presentes</h3>
@@ -437,9 +526,32 @@
   </div>
 
   <script>
+    const audio = document.getElementById('bgMusic');
+    const musicToggle = document.getElementById('musicToggle');
+
     function abrirConvite() {
+      // Inicia a música ao abrir o convite
+      audio.play().catch(e => console.log("Áudio aguardando interação"));
+      
+      // Animação de confetes caindo
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+
       document.getElementById('envelope').style.display = 'none';
       document.getElementById('inviteDetails').style.display = 'block';
+    }
+
+    function toggleMusica() {
+      if (audio.paused) {
+        audio.play();
+        musicToggle.innerText = '🔊';
+      } else {
+        audio.pause();
+        musicToggle.innerText = '🔇';
+      }
     }
 
     function abrirPresentes() {
