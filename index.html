@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Convite Especial - Anny Vitória</title>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@800;900&display=swap" rel="stylesheet">
   <!-- Efeito de Confetes -->
@@ -14,6 +14,7 @@
       padding: 0;
       font-family: 'Fredoka One', 'Nunito', sans-serif;
       user-select: none;
+      -webkit-tap-highlight-color: transparent;
     }
 
     body {
@@ -25,9 +26,9 @@
       overflow: hidden;
     }
 
-    /* Tela Vertical 9:16 (Stories/Reels) */
+    /* Tela Vertical 9:16 Responsiva para Celulares */
     .screen {
-      width: 100%;
+      width: 100vw;
       max-width: 414px;
       height: 100vh;
       max-height: 896px;
@@ -37,7 +38,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
-      padding: 15px;
+      padding: 12px 10px;
       box-shadow: 0 0 40px rgba(0,0,0,0.8);
     }
 
@@ -81,13 +82,13 @@
     /* Botão Mute/Unmute da Música */
     .music-control {
       position: absolute;
-      top: 15px;
-      right: 15px;
+      top: 12px;
+      right: 12px;
       z-index: 10;
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.95);
       border: 2px solid #ab47bc;
-      width: 38px;
-      height: 38px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -105,13 +106,13 @@
       justify-content: center;
       align-items: center;
       gap: 6px;
-      margin-top: 15px;
+      margin-top: 12px;
       width: 100%;
     }
 
     .char-img {
-      width: 55px;
-      height: 55px;
+      width: 52px;
+      height: 52px;
       border-radius: 50%;
       object-fit: cover;
       background: transparent;
@@ -129,7 +130,7 @@
       100% { transform: translateY(-8px); }
     }
 
-    /* Logo & Título (Fundo Transparente Forçado) */
+    /* Logo & Título Sem Fundo Branco */
     .header-logo {
       position: relative;
       z-index: 2;
@@ -139,16 +140,16 @@
     }
 
     .logo-img {
-      width: 180px;
+      width: 170px;
+      max-width: 80%;
       background: transparent !important;
       object-fit: contain;
       filter: drop-shadow(0 4px 8px rgba(0,0,0,0.25));
-      /* Garante a transparência total removendo fundos brancos residuais */
       mix-blend-mode: multiply;
     }
 
     .title-text {
-      font-size: 30px;
+      font-size: 28px;
       color: #7b1fa2;
       text-shadow: 
         2px 2px 0 #fff,
@@ -174,8 +175,8 @@
 
     /* Envelope Roxo */
     .envelope-card {
-      width: 270px;
-      height: 200px;
+      width: 260px;
+      height: 190px;
       background: linear-gradient(135deg, #ab47bc, #8e24aa);
       border-radius: 25px;
       border: 4px solid #ffffff;
@@ -189,8 +190,8 @@
       transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
-    .envelope-card:hover {
-      transform: scale(1.06);
+    .envelope-card:active {
+      transform: scale(0.96);
     }
 
     .envelope-card::before {
@@ -199,15 +200,15 @@
       top: 0;
       width: 0;
       height: 0;
-      border-left: 131px solid transparent;
-      border-right: 131px solid transparent;
-      border-top: 85px solid #ba68c8;
+      border-left: 126px solid transparent;
+      border-right: 126px solid transparent;
+      border-top: 80px solid #ba68c8;
       border-radius: 8px;
     }
 
     .heart-seal {
-      width: 58px;
-      height: 58px;
+      width: 56px;
+      height: 56px;
       background: #e91e63;
       border: 3px solid #fff;
       border-radius: 50%;
@@ -229,17 +230,17 @@
 
     .envelope-text {
       color: #ffffff;
-      font-size: 19px;
+      font-size: 18px;
       margin-top: 12px;
       z-index: 3;
       text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
     }
 
     .click-hand {
-      font-size: 28px;
+      font-size: 26px;
       position: absolute;
-      bottom: 15px;
-      left: 25px;
+      bottom: 12px;
+      left: 20px;
       z-index: 3;
       animation: bounce 1.5s infinite;
     }
@@ -264,16 +265,16 @@
 
     .photo-wrapper {
       position: relative;
-      width: 175px;
-      height: 175px;
-      margin: 0 auto 10px;
+      width: 165px;
+      height: 165px;
+      margin: 0 auto 8px;
     }
 
     .photo-wrapper img {
       width: 100%;
       height: 100%;
       border-radius: 50%;
-      border: 6px solid #fff;
+      border: 5px solid #fff;
       object-fit: cover;
       box-shadow: 0 8px 25px rgba(0,0,0,0.3);
     }
@@ -284,7 +285,7 @@
       right: -5px;
       background: #ffeb3b;
       color: #d81b60;
-      padding: 6px 14px;
+      padding: 6px 12px;
       border-radius: 20px;
       font-size: 14px;
       font-weight: 900;
@@ -293,18 +294,18 @@
     }
 
     .child-name {
-      font-size: 34px;
+      font-size: 32px;
       color: #8e24aa;
       text-shadow: 2px 2px 0 #fff;
       text-transform: uppercase;
-      margin-bottom: 5px;
+      margin-bottom: 4px;
     }
 
     .date-box {
       background: rgba(255, 255, 255, 0.95);
       border-radius: 18px;
-      padding: 10px 15px;
-      margin: 8px 10px;
+      padding: 10px 12px;
+      margin: 6px 10px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
       border: 2px solid #ba68c8;
     }
@@ -330,12 +331,12 @@
       display: flex;
       justify-content: space-between;
       width: 100%;
-      gap: 5px;
+      gap: 4px;
     }
 
     .nav-btn {
       flex: 1;
-      background: rgba(234, 128, 252, 0.92);
+      background: rgba(234, 128, 252, 0.95);
       border: 2px solid #ffffff;
       border-radius: 16px;
       padding: 8px 2px;
@@ -359,20 +360,20 @@
     }
 
     .nav-btn .icon {
-      width: 36px;
-      height: 36px;
+      width: 34px;
+      height: 34px;
       background: #ab47bc;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 18px;
+      font-size: 17px;
       color: #fff;
       margin-bottom: 3px;
       border: 2px solid #fff;
     }
 
-    /* Modal com Lista de Presentes */
+    /* Modais (Popups) */
     .modal-overlay {
       display: none;
       position: absolute;
@@ -380,7 +381,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(74, 20, 140, 0.8);
+      background: rgba(74, 20, 140, 0.85);
       z-index: 10;
       justify-content: center;
       align-items: center;
@@ -425,12 +426,25 @@
       border-bottom: 1px dashed #e1bee7;
     }
 
+    .location-info {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      color: #4a148c;
+      font-size: 15px;
+      line-height: 1.6;
+      background: #f3e5f5;
+      padding: 15px;
+      border-radius: 15px;
+      border: 2px dashed #ab47bc;
+      margin: 10px 0;
+    }
+
     .btn-close {
-      margin-top: 15px;
+      margin-top: 12px;
       background: #e91e63;
       color: #fff;
       border: none;
-      padding: 8px 20px;
+      padding: 8px 22px;
       border-radius: 18px;
       font-size: 15px;
       font-weight: 900;
@@ -440,16 +454,16 @@
 </head>
 <body>
 
-  <!-- Música na pasta audio/ -->
+  <!-- Áudio de Fundo (na pasta audio/) -->
   <audio id="bgMusic" loop preload="auto">
     <source src="audio/musica.mp3" type="audio/mpeg">
   </audio>
 
-  <div class="screen">
+  <div class="screen" onclick="iniciarAudioAutogestao()">
     <div class="animated-bg"></div>
     <div class="rainbow"></div>
 
-    <div class="music-control" id="musicToggle" onclick="toggleMusica()">🔊</div>
+    <div class="music-control" id="musicToggle" onclick="toggleMusica(event)">🔊</div>
 
     <!-- Fotos dos personagens na pasta img/ -->
     <div class="characters-top">
@@ -474,7 +488,7 @@
       <div class="invite-details" id="inviteDetails">
         <div class="photo-wrapper">
           <img src="img/anny.jpg" alt="Anny Vitória">
-          <div class="age-badge">1 a 2 anos</div>
+          <div class="age-badge">1 aninho</div>
         </div>
 
         <h2 class="child-name">Anny Vitória</h2>
@@ -486,34 +500,34 @@
       </div>
     </div>
 
-    <!-- Botões de Ação Diretos -->
+    <!-- Botões de Ação -->
     <div class="bottom-nav">
-      <!-- Link direto para o WhatsApp +55 94 99162-7473 -->
+      <!-- WhatsApp +55 94 99162-7473 -->
       <a href="https://wa.me/5594991627473?text=Olá!%20Confirmo%20minha%20presença%20no%20aniversário%20da%20Anny%20Vitória!" target="_blank" class="nav-btn">
         <div class="icon">📝</div>
         Confirmar presença
       </a>
 
-      <!-- Link para a Localização no Google Maps -->
-      <a href="https://maps.google.com/?q=Rua+D+n33+entre+ruas+01+e+02+cidade+nova" target="_blank" class="nav-btn">
+      <!-- Modal de Localização -->
+      <button class="nav-btn" onclick="abrirLocalizacao()">
         <div class="icon">📍</div>
         Acessar Localização
-      </a>
+      </button>
 
-      <!-- Modal da Lista de Presentes -->
+      <!-- Modal de Presentes -->
       <button class="nav-btn" onclick="abrirPresentes()">
         <div class="icon">🎁</div>
         Sugestão de Presentes
       </button>
 
-      <!-- Link do Filtro/Instagram -->
+      <!-- Instagram -->
       <a href="https://instagram.com" target="_blank" class="nav-btn">
         <div class="icon">📷</div>
         Acessar filtro da festa
       </a>
     </div>
 
-    <!-- Popup da Lista de Presentes -->
+    <!-- Modal da Lista de Presentes -->
     <div class="modal-overlay" id="modalPresentes">
       <div class="modal-card">
         <h3>🎁 Sugestão de Presentes</h3>
@@ -524,20 +538,45 @@
           <li>👟 Calçados nº 20 ou 21</li>
           <li>👑 Amo acessórios</li>
         </ul>
-        <button class="btn-close" onclick="fecharPresentes()">Fechar</button>
+        <button class="btn-close" onclick="fecharModal('modalPresentes')">Fechar</button>
       </div>
     </div>
+
+    <!-- Modal do Endereço (Localização Interna) -->
+    <div class="modal-overlay" id="modalLocalizacao">
+      <div class="modal-card">
+        <h3>📍 Local da Festa</h3>
+        <div class="location-info">
+          <p>🏠 <strong>Endereço:</strong></p>
+          <p>Rua D, nº 33</p>
+          <p>(Entre as ruas 01 e 02)</p>
+          <p><strong>Bairro:</strong> Cidade Nova</p>
+        </div>
+        <button class="btn-close" onclick="fecharModal('modalLocalizacao')">Fechar</button>
+      </div>
+    </div>
+
   </div>
 
   <script>
     const audio = document.getElementById('bgMusic');
     const musicToggle = document.getElementById('musicToggle');
+    let audioIniciado = false;
+
+    // Garante que o áudio toque assim que o usuário interagir com a tela do celular
+    function iniciarAudioAutogestao() {
+      if (!audioIniciado) {
+        audio.play().then(() => {
+          audioIniciado = true;
+          musicToggle.innerText = '🔊';
+        }).catch(e => console.log("Aguardando toque..."));
+      }
+    }
 
     function abrirConvite() {
-      // Inicia a música ao clicar no envelope
-      audio.play().catch(e => console.log("Aguardando interação"));
+      iniciarAudioAutogestao();
 
-      // Confetes no ecrã
+      // Confetes na tela
       confetti({
         particleCount: 120,
         spread: 80,
@@ -548,7 +587,8 @@
       document.getElementById('inviteDetails').style.display = 'block';
     }
 
-    function toggleMusica() {
+    function toggleMusica(event) {
+      event.stopPropagation();
       if (audio.paused) {
         audio.play();
         musicToggle.innerText = '🔊';
@@ -562,8 +602,12 @@
       document.getElementById('modalPresentes').style.display = 'flex';
     }
 
-    function fecharPresentes() {
-      document.getElementById('modalPresentes').style.display = 'none';
+    function abrirLocalizacao() {
+      document.getElementById('modalLocalizacao').style.display = 'flex';
+    }
+
+    function fecharModal(id) {
+      document.getElementById(id).style.display = 'none';
     }
   </script>
 </body>
