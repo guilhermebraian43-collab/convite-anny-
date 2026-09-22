@@ -324,14 +324,14 @@
       line-height: 1.3;
     }
 
-    /* Botões Inferiores */
+    /* Botões Inferiores (3 Opções) */
     .bottom-nav {
       position: relative;
       z-index: 2;
       display: flex;
       justify-content: space-between;
       width: 100%;
-      gap: 4px;
+      gap: 6px;
     }
 
     .nav-btn {
@@ -339,14 +339,14 @@
       background: rgba(234, 128, 252, 0.95);
       border: 2px solid #ffffff;
       border-radius: 16px;
-      padding: 8px 2px;
+      padding: 10px 4px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-decoration: none;
       color: #4a148c;
-      font-size: 9px;
+      font-size: 10px;
       font-weight: 900;
       text-align: center;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
@@ -360,16 +360,16 @@
     }
 
     .nav-btn .icon {
-      width: 34px;
-      height: 34px;
+      width: 36px;
+      height: 36px;
       background: #ab47bc;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 17px;
+      font-size: 18px;
       color: #fff;
-      margin-bottom: 3px;
+      margin-bottom: 4px;
       border: 2px solid #fff;
     }
 
@@ -500,7 +500,7 @@
       </div>
     </div>
 
-    <!-- Botões de Ação -->
+    <!-- 3 Botões de Ação -->
     <div class="bottom-nav">
       <!-- WhatsApp +55 94 99162-7473 -->
       <a href="https://wa.me/5594991627473?text=Olá!%20Confirmo%20minha%20presença%20no%20aniversário%20da%20Anny%20Vitória!" target="_blank" class="nav-btn">
@@ -519,12 +519,6 @@
         <div class="icon">🎁</div>
         Sugestão de Presentes
       </button>
-
-      <!-- Instagram -->
-      <a href="https://instagram.com" target="_blank" class="nav-btn">
-        <div class="icon">📷</div>
-        Acessar filtro da festa
-      </a>
     </div>
 
     <!-- Modal da Lista de Presentes -->
@@ -563,7 +557,6 @@
     const musicToggle = document.getElementById('musicToggle');
     let audioIniciado = false;
 
-    // Garante que o áudio toque assim que o usuário interagir com a tela do celular
     function iniciarAudioAutogestao() {
       if (!audioIniciado) {
         audio.play().then(() => {
